@@ -80,7 +80,7 @@ class stack_allocator
 		return m_allocator.allocate(n, hint);
 	}
 
-	void deallocate(value_type* p, size_type n)
+	void deallocate(pointer p, size_type n)
 	{
 		if (pointer_to_internal_buffer(p))
 		{
