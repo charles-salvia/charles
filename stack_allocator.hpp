@@ -70,7 +70,7 @@ class stack_allocator
 
 	pointer allocate(size_type n, const_void_pointer hint = const_void_pointer())
 	{
-		if (std::distance(m_stack_pointer, m_end) <= n)
+		if (n <= std::distance(m_stack_pointer, m_end))
 		{
 			pointer result = m_stack_pointer;
 			m_stack_pointer += n;
