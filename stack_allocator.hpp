@@ -106,7 +106,7 @@ class stack_allocator
 		m_allocator.destroy(p);
 	}
 
-	pointer address(reference x) const
+	pointer address(reference x) const noexcept
 	{
 		if (pointer_to_internal_buffer(std::addressof(x)))
 		{
@@ -116,7 +116,7 @@ class stack_allocator
 		return m_allocator.address(x);
 	}
 	
-	const_pointer address(const_reference x) const
+	const_pointer address(const_reference x) const noexcept
 	{
 		if (pointer_to_internal_buffer(std::addressof(x)))
 		{
