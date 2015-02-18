@@ -53,7 +53,7 @@ class stack_allocator
 	{ }
 
 	explicit stack_allocator(pointer buffer, const allocator_type& alloc = allocator_type())
-		: m_allocator(alloc), m_begin(buffer), m_end(buffer + N * sizeof(T)), 
+		: m_allocator(alloc), m_begin(buffer), m_end(buffer + N), 
 			m_stack_pointer(buffer)
 	{ }
 
