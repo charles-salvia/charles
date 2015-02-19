@@ -136,10 +136,9 @@ class stack_allocator
 
 	private:
 
-	template <class U>
-	bool pointer_to_internal_buffer(U* p) const
+	bool pointer_to_internal_buffer(const_pointer p) const
 	{
-		return (!(std::less<T*>()(p, m_begin)) && (std::less<T*>()(p, m_end)));
+		return (!(std::less<const_pointer>()(p, m_begin)) && (std::less<const_pointer>()(p, m_end)));
 	}
 
 	pointer m_begin;
