@@ -70,7 +70,7 @@ class stack_allocator
 
 	pointer allocate(size_type n, const_void_pointer hint = const_void_pointer())
 	{
-		if (n <= std::distance(m_stack_pointer, m_end))
+		if (n <= size_type(std::distance(m_stack_pointer, m_end)))
 		{
 			pointer result = m_stack_pointer;
 			m_stack_pointer += n;
@@ -141,10 +141,10 @@ class stack_allocator
 		return (!(std::less<const_pointer>()(p, m_begin)) && (std::less<const_pointer>()(p, m_end)));
 	}
 
+	allocator_type m_allocator;
 	pointer m_begin;
 	pointer m_end;
 	pointer m_stack_pointer;
-	allocator_type m_allocator;
 };
 
 template <class T1, std::size_t N, class Allocator, class T2>
