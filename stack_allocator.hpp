@@ -161,5 +161,30 @@ bool operator != (const stack_allocator<T1, N, Allocator>& lhs,
 	return !(lhs == rhs);
 }
 
+// -------- Specialization for void
+//
+template <std::size_t N, class Allocator>
+class stack_allocator<void, N, Allocator>
+{
+	public:
+
+	typedef std::size_t size_type;
+	typedef std::ptrdiff_t difference_type;
+	typedef void* pointer;
+	typedef const void* const_pointer;
+	typedef void value_type;
+
+	constexpr pointer buffer() const noexcept
+	{
+		return nullptr;
+	}
+
+	template <class U>
+	struct rebind
+	{
+		typedef stack_allocator<U, N, typename Allocator::template rebind<U>::other> other;
+	};
+};
+
 #endif
 
